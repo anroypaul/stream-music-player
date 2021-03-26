@@ -4,7 +4,7 @@ const parseString = require("xml2js").parseString;
 const cors = require("cors");
 
 const app = express();
-const port = 5000 || process.env.port;
+const port = process.env.PORT || 5000;
 
 app.use(express.json());
 app.use(cors());
