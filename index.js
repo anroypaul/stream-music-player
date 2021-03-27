@@ -16,7 +16,7 @@ app.use(
     origin: process.env.CORS_ORIGIN,
   })
 );
-app.use(express.static("public"));
+app.use(express.static(__dirname + "/public"));
 
 app.get("/current-track", async (req, res) => {
   await axios
