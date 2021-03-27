@@ -11,7 +11,11 @@ const API_STREAM_LINK = "http://air.aristocrats.fm:8000/live2";
 
 const app = express();
 app.use(express.json());
-app.use(cors());
+app.use(
+  cors({
+    origin: process.env.CORS_ORIGIN,
+  })
+);
 app.use(express.static("public"));
 
 app.get("/current-track", async (req, res) => {

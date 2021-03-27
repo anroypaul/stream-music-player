@@ -2,7 +2,11 @@ import React, { useState, useEffect, useRef } from "react";
 import axios from "axios";
 import "./App.css";
 
-const API_STREAM_LINK = "http://air.aristocrats.fm:8000/live2";
+//const API_STREAM_LINK = "http://air.aristocrats.fm:8000/live2";
+const API_URL =
+  window.location.hostname === "localhost"
+    ? "http://localhost:5000"
+    : "https://aristocrats-music-player.herokuapp.com/";
 
 function App() {
   const [volume, setVolume] = useState(1);
@@ -11,7 +15,7 @@ function App() {
   const [currentTrack, setCurrentTrack] = useState("");
 
   useEffect(() => {
-    axios.get(`http://localhost:5000/current-track`).then((response) => {
+    axios.get(`${API_URL}/current-track`).then((response) => {
       setCurrentTrack(response.data.Playlist);
     });
   }, []);
@@ -110,7 +114,7 @@ function App() {
             <audio
               ref={audioRef}
               onTimeUpdate={getCurrentDuration}
-              src={`http://localhost:5000/audio-stream`}
+              src={`${API_URL}/audio-stream`}
             ></audio>
             <p className="card-text" style={{ fontWeight: "600", margin: 0 }}>
               {currentTrack.song?.title}
