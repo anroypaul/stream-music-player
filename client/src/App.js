@@ -6,7 +6,7 @@ import "./App.css";
 const API_URL =
   window.location.hostname === "localhost"
     ? "http://localhost:5000"
-    : "https://aristocrats-music-player.herokuapp.com/";
+    : "https://aristocrats-music-player.herokuapp.com";
 
 function App() {
   const [volume, setVolume] = useState(1);
